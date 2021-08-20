@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace ShoppingCart.Api.Controllers
 {
     [ApiController]
-    [Route("api/")]
+    [Route("api/products/")]
     public class ProductController : Controller
     {
         private readonly IMediator _mediator;
@@ -20,13 +20,13 @@ namespace ShoppingCart.Api.Controllers
             _mediator = mediator;
         }
 
-        [HttpGet("products")]
+        [HttpGet]
         public async Task<List<Product>> GetAllProducts()
         {
             return await _mediator.Send(new GetProductListQuery());
         }
 
-        [HttpGet("products/{productId}")]
+        [HttpGet("{productId}")]
         public async Task<Product> GetProductById(int productId)
         {
             Product product = new();
@@ -34,21 +34,21 @@ namespace ShoppingCart.Api.Controllers
             // return await _mediator.Send(new GetProductListQuery());
         }
 
-        [HttpPost("products")]
+        [HttpPost]
         public async Task<bool> AddProduct([FromBody] Product product)
         {
             //return await _mediator.Send(new GetProductListQuery());
             return true;
         }
 
-        [HttpPut("products/{productId}")]
-        public async Task<bool> UpdateProduct([FromBody] Product product)
+        [HttpPut("{productId}")]
+        public async Task<bool> UpdateProduct(int productId,[FromBody] Product product)
         {
             //return await _mediator.Send(new GetProductListQuery());
             return true;
         }
 
-        [HttpDelete("products/{productId}")]
+        [HttpDelete("{productId}")]
         public async Task RemoveProduct(int productId)
         {
             // return await _mediator.Send(new GetProductListQuery());

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace ShoppingCart.Api.Controllers
 {
     [ApiController]
-    [Route("api/product-management/products")]
+    [Route("api/products")]
     public class ProductController : Controller
     {
         private readonly IMediator _mediator;
@@ -27,38 +27,38 @@ namespace ShoppingCart.Api.Controllers
         }
 
 
-        [HttpGet]
+        [HttpGet("/{categoryId}")]
         public async Task<List<Product>> GetProductsByCategory(int categoryId)
         {
-            return await _mediator.Send(new GetProductListQuery());
+            return new List<Product>();
         }
 
-        [HttpGet]
-        public async Task<Product> GetProductById(int id)
-        {
-            Product product = new();
-            return product;
-           // return await _mediator.Send(new GetProductListQuery());
-        }
+        //[HttpGet]
+        //public async Task<Product> GetProductById(int id)
+        //{
+        //    Product product = new();
+        //    return product;
+        //   // return await _mediator.Send(new GetProductListQuery());
+        //}
 
-        [HttpDelete]
-        public async Task RemoveProduct(int id)
-        {
-            // return await _mediator.Send(new GetProductListQuery());
-        }
+        //[HttpDelete]
+        //public async Task RemoveProduct(int id)
+        //{
+        //    // return await _mediator.Send(new GetProductListQuery());
+        //}
 
-        [HttpPost]
-        public async Task<bool> AddProducts([FromBody]Product product)
-        {
-            //return await _mediator.Send(new GetProductListQuery());
-            return true;
-        }
+        //[HttpPost]
+        //public async Task<bool> AddProducts([FromBody]Product product)
+        //{
+        //    //return await _mediator.Send(new GetProductListQuery());
+        //    return true;
+        //}
 
-        [HttpPut]
-        public async Task<bool> UpdateProduct([FromBody] Product product)
-        {
-            //return await _mediator.Send(new GetProductListQuery());
-            return true;
-        }
+        //[HttpPut]
+        //public async Task<bool> UpdateProduct([FromBody] Product product)
+        //{
+        //    //return await _mediator.Send(new GetProductListQuery());
+        //    return true;
+        //}
     }
 }

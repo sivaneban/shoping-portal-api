@@ -34,9 +34,11 @@ namespace ShoppingCart.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<List<Product>> GetProductById(int id)
+        public async Task<Product> GetProductById(int id)
         {
-            return await _mediator.Send(new GetProductListQuery());
+            Product product = new();
+            return product;
+           // return await _mediator.Send(new GetProductListQuery());
         }
 
         [HttpDelete]

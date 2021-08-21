@@ -41,8 +41,8 @@ namespace ShoppingCart.Api.Controllers
             return true;
         }
 
-        [HttpPut("{productId}")]
-        public async Task<bool> UpdateProduct(int productId,[FromBody] Product product)
+        [HttpPut]
+        public async Task<bool> UpdateProduct([FromBody] Product product)
         {
             //return await _mediator.Send(new GetProductListQuery());
             return true;

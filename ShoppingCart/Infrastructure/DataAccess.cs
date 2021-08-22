@@ -32,6 +32,10 @@ namespace Infrastructure
         public bool UpdateProduct(UpdateProductCommand updateRequest)
         {
             Product product = _products.Where(prod => prod.Id == updateRequest.Id).SingleOrDefault();
+            if(product == null)
+            {
+                return false;
+            }
             product.Name = updateRequest.Name;
             var x = GetProducts();
             return true;

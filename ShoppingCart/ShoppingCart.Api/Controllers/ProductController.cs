@@ -2,6 +2,7 @@
 using Application.Product.Queries;
 using Domain.Entities;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -38,14 +39,18 @@ namespace ShoppingCart.Api.Controllers
         [HttpPost]
         public async Task<Product> AddProduct(CreateProductCommand command)
         {
-            return await _mediator.Send(command);
-            //return true;
+
+            var result = await _mediator.Send(command);
+            Response.StatusCode = result!=null? StatusCodes.Status201Created: StatusCodes.Status409Conflict;
+            return result;
         }
 
         [HttpPut]
         public async Task<bool> UpdateProduct([FromBody] UpdateProductCommand product)
         {
-             return await _mediator.Send(product);
+             bool result = await _mediator.Send(product);
+            Response.StatusCode = result? StatusCodes.Status204NoContent : StatusCodes.Status404NotFound;
+            return result;
         }
 
         [HttpDelete("{productId}")]

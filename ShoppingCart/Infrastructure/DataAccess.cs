@@ -19,6 +19,7 @@ namespace Infrastructure
         {
             Product newProduct = new() { Name = name, Category = category };
             newProduct.Id = _products.Max(x => x.Id) + 1;
+            _products.Add(newProduct);
             return newProduct;
         }
 

@@ -1,4 +1,5 @@
-﻿using Application.Product.Queries;
+﻿using Application.Product.Commands;
+using Application.Product.Queries;
 using Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -29,16 +30,16 @@ namespace ShoppingCart.Api.Controllers
         [HttpGet("{productId}")]
         public async Task<Product> GetProductById(int productId)
         {
-            Product product = new();
-            return product;
-            // return await _mediator.Send(new GetProductListQuery());
+            //Product product = new();
+            //return product;
+            return await _mediator.Send(new GetProductDetailsQuery { Id = productId });
         }
 
         [HttpPost]
-        public async Task<bool> AddProduct([FromBody] Product product)
+        public async Task<Product> AddProduct(CreateProductCommand command)
         {
-            //return await _mediator.Send(new GetProductListQuery());
-            return true;
+            return await _mediator.Send(command);
+            //return true;
         }
 
         [HttpPut]

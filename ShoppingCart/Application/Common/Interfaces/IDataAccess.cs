@@ -1,4 +1,5 @@
 ﻿using Application.Product.Commands;
+using Application.ProductCategory.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,5 +15,7 @@ namespace Application.Common.Interfaces
 
         bool UpdateProduct(UpdateProductCommand updateRequest);
         bool DeleteProduct(DeleteProductCommand request);
+        Domain.Entities.ProductCategory Create(CreateProductCategoryCommand request);
+        //TResponse Create<TRequest,TResponse>(TRequest request);
     }
 }

@@ -1,6 +1,8 @@
 ﻿using Application.Common.Interfaces;
 using Application.Product.Commands;
+using Application.ProductCategory.Commands;
 using Domain.Entities;
+using Infrastructure.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,11 +12,13 @@ namespace Infrastructure
     public class DataAccess : IDataAccess
     {
         private List<Product> _products = new();
+        private readonly ShoppingCartContext context;
 
-        public DataAccess()
+        public DataAccess(ShoppingCartContext context)
         {
             _products.Add(new Product { Id = 1, Name = "MSI 9Sek", Category = "Laptop" });
             _products.Add(new Product { Id = 2, Name = "Samsung M32", Category = "Mobile Phone" });
+            this.context = context;
         }
         public Product AddProduct(string name, string category)
         {
@@ -47,5 +51,21 @@ namespace Infrastructure
             return _products.Remove(product);
         }
 
+        public ProductCategory Create(CreateProductCategoryCommand request)
+        {
+            Entities.ProductCategory prodCategory = new()
+            {
+                ProductCategoryName = request.ProductCategoryName
+            };
+            var x = context.Add(prodCategory);
+            context.SaveChanges();
+            return new ProductCategory();
+        }
+
+        //public TResponse Create<TRequest,TResponse>(TRequest request)
+        //{
+        //    TResponse response = context.Add(request);
+        //    throw new NotImplementedException();
+        //}
     }
 }

@@ -1,10 +1,13 @@
 using Application.Common.Interfaces;
 using Application.Product.Queries;
+using Application.ProductCategory.Commands;
 using Infrastructure;
+using Infrastructure.Context;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -30,9 +33,16 @@ namespace ShoppingCart.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var configuration = new ConfigurationBuilder()
+               .SetBasePath(AppContext.BaseDirectory)
+               .AddJsonFile("appsettings.json", true, true)
+               .Build();
+
+            services.AddDbContext<ShoppingCartContext>(options => options.UseSqlServer(configuration["ConnectionStrings:ShoppingPortal"]), ServiceLifetime.Transient);
             services.AddScoped<IDataAccess, DataAccess>();
             //services.AddMediatR(typeof(DataAccess).Assembly);
             services.AddMediatR(typeof(GetProductListQueryHandler).Assembly);
+        //    services.AddMediatR(typeof(CommandHandler).Assembly);
             services.AddControllers();            
             services.AddSwaggerGen(c =>
             {

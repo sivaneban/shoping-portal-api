@@ -49,9 +49,9 @@ namespace ShoppingCart.Api.Controllers
         }
 
         [HttpDelete("{productId}")]
-        public async Task RemoveProduct(int productId)
+        public async Task<bool> RemoveProduct(int productId)
         {
-            // return await _mediator.Send(new GetProductListQuery());
+            return await _mediator.Send(new DeleteProductCommand{ Id = productId });
         }        
     }
 }

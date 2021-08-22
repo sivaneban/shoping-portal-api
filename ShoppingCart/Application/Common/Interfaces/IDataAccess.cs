@@ -13,5 +13,6 @@ namespace Application.Common.Interfaces
         Domain.Entities.Product AddProduct(string name, string category);
 
         bool UpdateProduct(UpdateProductCommand updateRequest);
+        bool DeleteProduct(DeleteProductCommand request);
     }
 }

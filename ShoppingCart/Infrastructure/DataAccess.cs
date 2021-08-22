@@ -37,5 +37,11 @@ namespace Infrastructure
             return true;
         }
 
+        public bool DeleteProduct(DeleteProductCommand request)
+        {
+            Product product = _products.Where(x => x.Id == request.Id).FirstOrDefault();
+            return _products.Remove(product);
+        }
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Application.Common.Interfaces;
+using Application.Product.Commands;
 using Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -27,5 +28,14 @@ namespace Infrastructure
         {
             return _products;
         }
+
+        public bool UpdateProduct(UpdateProductCommand updateRequest)
+        {
+            Product product = _products.Where(prod => prod.Id == updateRequest.Id).SingleOrDefault();
+            product.Name = updateRequest.Name;
+            var x = GetProducts();
+            return true;
+        }
+
     }
 }

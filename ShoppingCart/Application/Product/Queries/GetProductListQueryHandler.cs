@@ -1,4 +1,5 @@
 ﻿using Application.Common.Interfaces;
+using Application.Product.Commands;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -22,5 +23,7 @@ namespace Application.Product.Queries
         {
             return Task.FromResult(_dataAccess.GetProducts());
         }
+
+       
     }
 }

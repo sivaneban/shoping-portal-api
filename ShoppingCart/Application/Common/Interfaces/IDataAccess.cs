@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Application.Product.Commands;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,5 +11,7 @@ namespace Application.Common.Interfaces
     {
         List<Domain.Entities.Product> GetProducts();
         Domain.Entities.Product AddProduct(string name, string category);
+
+        bool UpdateProduct(UpdateProductCommand updateRequest);
     }
 }

@@ -43,10 +43,9 @@ namespace ShoppingCart.Api.Controllers
         }
 
         [HttpPut]
-        public async Task<bool> UpdateProduct([FromBody] Product product)
+        public async Task<bool> UpdateProduct([FromBody] UpdateProductCommand product)
         {
-            //return await _mediator.Send(new GetProductListQuery());
-            return true;
+             return await _mediator.Send(product);
         }
 
         [HttpDelete("{productId}")]

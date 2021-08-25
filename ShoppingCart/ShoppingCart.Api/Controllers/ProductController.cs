@@ -23,7 +23,7 @@ namespace ShoppingCart.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<List<Product>> GetAllProducts()
+        public async Task<List<Product>> Get()
         {
             return await _mediator.Send(new GetProductListQuery());
         }
@@ -37,7 +37,7 @@ namespace ShoppingCart.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<Product> AddProduct(CreateProductCommand command)
+        public async Task<Product> Post(CreateProductCommand command)
         {
 
             var result = await _mediator.Send(command);
@@ -46,7 +46,7 @@ namespace ShoppingCart.Api.Controllers
         }
 
         [HttpPut]
-        public async Task<bool> UpdateProduct([FromBody] UpdateProductCommand product)
+        public async Task<bool> Put([FromBody] UpdateProductCommand product)
         {
              bool result = await _mediator.Send(product);
             Response.StatusCode = result? StatusCodes.Status204NoContent : StatusCodes.Status404NotFound;
@@ -54,7 +54,7 @@ namespace ShoppingCart.Api.Controllers
         }
 
         [HttpDelete("{productId}")]
-        public async Task<bool> RemoveProduct(int productId)
+        public async Task<bool> Delete(int productId)
         {
             return await _mediator.Send(new DeleteProductCommand{ Id = productId });
         }        

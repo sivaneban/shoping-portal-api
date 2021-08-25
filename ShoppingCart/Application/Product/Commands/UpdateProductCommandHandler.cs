@@ -1,15 +1,11 @@
 ﻿using Application.Common.Interfaces;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Application.Product.Commands
 {
-    public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand, bool>, IRequestHandler<DeleteProductCommand, bool>
+    public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand, bool>
     {
         private readonly IDataAccess dataAccess;
 
@@ -22,9 +18,5 @@ namespace Application.Product.Commands
             return Task.FromResult(dataAccess.UpdateProduct(request));
         }
 
-        public Task<bool> Handle(DeleteProductCommand request, CancellationToken cancellationToken)
-        {
-            return Task.FromResult(dataAccess.DeleteProduct(request));
-        }
     }
 }

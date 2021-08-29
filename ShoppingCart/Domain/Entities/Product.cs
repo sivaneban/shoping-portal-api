@@ -1,12 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
+
+#nullable disable
 
 namespace Domain.Entities
 {
-    public class Product
+    public partial class Product
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Category { get; set; }
-        
+        public int ProductId { get; set; }
+        public string ProductName { get; set; }
+        public int ProductCategoryId { get; set; }
+        public decimal ProductPrice { get; set; }
+        public int QuantityTypeId { get; set; }
+        public decimal Quantity { get; set; }
     }
 }

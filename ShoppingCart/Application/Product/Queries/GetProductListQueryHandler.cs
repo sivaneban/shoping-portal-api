@@ -13,15 +13,18 @@ namespace Application.Product.Queries
     public class GetProductListQueryHandler : IRequestHandler<GetProductListQuery, List<Domain.Entities.Product>>
     {
         private readonly IDataAccess _dataAccess;
+        private readonly IApplicationDbContext applicationDbContext;
 
-        public GetProductListQueryHandler(IDataAccess dataAccess)
+        public GetProductListQueryHandler(IDataAccess dataAccess, IApplicationDbContext applicationDbContext)
         {
             _dataAccess = dataAccess;
+            this.applicationDbContext = applicationDbContext;
         }
 
         public Task<List<Domain.Entities.Product>> Handle(GetProductListQuery request, CancellationToken cancellationToken)
         {
-            return Task.FromResult(_dataAccess.GetProducts());
+            List<Domain.Entities.Product> products = applicationDbContext.Product.ToList();
+            return Task.FromResult(products);
         }
 
        

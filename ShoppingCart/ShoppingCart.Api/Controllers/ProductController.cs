@@ -45,14 +45,12 @@ namespace ShoppingCart.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Product>> Post([FromBody] ProductDto  productDto)
+        public async Task<ActionResult<int>> Post([FromBody] CreateProductCommand product)
         {
-            Product product = await _mediator.Send(new GetProductDetailsQuery { Id = productDto.ProductId });
-            if(product == null)
-            {
-                var result = await _mediator.Send(productDto);
-                Response.StatusCode = result != null ? StatusCodes.Status201Created : StatusCodes.Status409Conflict;
-                return  Created("", productDto); ;
+            var result = await _mediator.Send(product);
+            if (result > 0) 
+            { 
+                return  Created("", result); 
             }
             else
             {
@@ -62,17 +60,17 @@ namespace ShoppingCart.Api.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult> Put([FromBody] ProductDto productDto)
+        public async Task<ActionResult> Put([FromBody] UpdateProductCommand productDto)
         {
-            Product product = await _mediator.Send(new GetProductDetailsQuery { Id = productDto.ProductId });
-            if (product == null)
+            var result = await _mediator.Send(productDto);
+            if (result == true)
             {
-                return NotFound();
+                return NoContent();
+              
             }
             else
             {
-                 await _mediator.Send(productDto);
-                return NoContent();
+                return NotFound();
             }
            
             
@@ -81,24 +79,21 @@ namespace ShoppingCart.Api.Controllers
         [HttpDelete("{productId}")]
         public async Task<ActionResult> Delete(int productId)
         {
-            Product product = await _mediator.Send(new GetProductDetailsQuery { Id = productId });
-            if (product == null)
+
+            int result = await _mediator.Send(new DeleteProductCommand { Id = productId });
+            if (result == 2)
             {
                 return NotFound();
             }
+            if (result==1)
+            {
+                return NoContent();
+            }
             else
             {
-                bool result =  await _mediator.Send(new DeleteProductCommand { Id = productId });
-                if (result)
-                {
-                    return NoContent();
-                }
-                else
-                {
-                    return StatusCode(Microsoft.AspNetCore.Http.StatusCodes.Status500InternalServerError);
-                }
+                return StatusCode(Microsoft.AspNetCore.Http.StatusCodes.Status500InternalServerError);
             }
-            
-        }        
+
+        }
     }
 }

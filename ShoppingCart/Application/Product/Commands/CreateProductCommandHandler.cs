@@ -5,18 +5,30 @@ using System.Threading.Tasks;
 
 namespace Application.Product.Commands
 {
-    public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, Domain.Entities.Product>
+    public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, int>
     {
         private readonly IDataAccess _dataAccess;
+        private readonly IApplicationDbContext applicationDbContext;
 
-        public CreateProductCommandHandler(IDataAccess dataAccess)
+        public CreateProductCommandHandler(IDataAccess dataAccess, IApplicationDbContext applicationDbContext)
         {
             _dataAccess = dataAccess;
+            this.applicationDbContext = applicationDbContext;
         }
 
-        public Task<Domain.Entities.Product> Handle(CreateProductCommand request, CancellationToken cancellationToken)
+        public async Task<int> Handle(CreateProductCommand request, CancellationToken cancellationToken)
         {
-            return Task.FromResult(_dataAccess.AddProduct(request.Name,request.Category));
+            Domain.Entities.Product entity = new()
+            {
+                ProductName = request.ProductName,
+                ProductCategoryId = request.ProductCategoryId,
+                ProductPrice = request.ProductPrice,
+                QuantityTypeId=request.QuantityTypeId,
+                Quantity=request.Quantity
+            };
+            applicationDbContext.Product.Add(entity);
+            int result = await applicationDbContext.SaveChangesAsync();
+            return result;
         }
     }
 }

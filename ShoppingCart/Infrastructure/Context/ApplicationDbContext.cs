@@ -20,6 +20,7 @@ namespace Infrastructure.Context
         }
 
         public DbSet<ProductCategory> ProductCategory { get; set; }
+        public DbSet<Product> Product { get; set; }
 
         public async Task<int> SaveChangesAsync()
         {

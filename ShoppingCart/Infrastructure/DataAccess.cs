@@ -16,14 +16,14 @@ namespace Infrastructure
 
         public DataAccess(ShoppingCartContext context)
         {
-            _products.Add(new Product { Id = 1, Name = "MSI 9Sek", Category = "Laptop" });
-            _products.Add(new Product { Id = 2, Name = "Samsung M32", Category = "Mobile Phone" });
+            _products.Add(new Product { ProductId = 1, ProductName = "MSI 9Sek", ProductCategoryId = 1 });
+            _products.Add(new Product { ProductId = 2, ProductName = "Samsung M32", ProductCategoryId = 2 });
             this.context = context;
         }
-        public Product AddProduct(string name, string category)
+        public Product AddProduct(string name, int category)
         {
-            Product newProduct = new() { Name = name, Category = category };
-            newProduct.Id = _products.Max(x => x.Id) + 1;
+            Product newProduct = new() { ProductName = name, ProductCategoryId = category };
+            newProduct.ProductId = _products.Max(x => x.ProductId) + 1;
             _products.Add(newProduct);
             return newProduct;
         }
@@ -35,25 +35,25 @@ namespace Infrastructure
 
         public bool UpdateProduct(UpdateProductCommand updateRequest)
         {
-            Product product = _products.Where(prod => prod.Id == updateRequest.Id).SingleOrDefault();
+            Product product = _products.Where(prod => prod.ProductId == updateRequest.ProductId).SingleOrDefault();
             if(product == null)
             {
                 return false;
             }
-            product.Name = updateRequest.Name;
+            product.ProductName = updateRequest.ProductName;
             var x = GetProducts();
             return true;
         }
 
         public bool DeleteProduct(DeleteProductCommand request)
         {
-            Product product = _products.Where(x => x.Id == request.Id).FirstOrDefault();
+            Product product = _products.Where(x => x.ProductId == request.Id).FirstOrDefault();
             return _products.Remove(product);
         }
 
         public ProductCategory Create(CreateProductCategoryCommand request)
         {
-            Entities.ProductCategory prodCategory = new()
+            ProductCategory prodCategory = new()
             {
                 ProductCategoryName = request.ProductCategoryName
             };

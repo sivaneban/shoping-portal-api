@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Infrastructure.Entities;
+using Domain.Entities;
 
 #nullable disable
 

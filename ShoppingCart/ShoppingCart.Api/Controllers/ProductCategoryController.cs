@@ -24,10 +24,17 @@ namespace ShoppingCart.Api.Controllers
         //    return View();
         //}
         [HttpPost]
-        public async Task<Domain.Entities.ProductCategory> CreateProductCategory(CreateProductCategoryCommand command)
+        public async Task<ActionResult<int>> CreateProductCategory(CreateProductCategoryCommand command)
         {
-            _ = await mediator.Send(command);
-            return new Domain.Entities.ProductCategory();
+            int result = await mediator.Send(command);
+            if (result > 0)
+            {
+                return Created("",result);
+            }
+            else
+            {
+                return Conflict();
+            }
         }
     }
 }

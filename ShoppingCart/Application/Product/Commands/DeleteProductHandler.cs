@@ -12,7 +12,7 @@ namespace Application.Product.Commands
         private readonly IApplicationDbContext applicationDbContext;
         private readonly IMediator mediator;
 
-        public DeleteProductHandler(IDataAccess dataAccess,IApplicationDbContext applicationDbContext,IMediator mediator)
+        public DeleteProductHandler(IDataAccess dataAccess, IApplicationDbContext applicationDbContext, IMediator mediator)
         {
             this.dataAccess = dataAccess;
             this.applicationDbContext = applicationDbContext;

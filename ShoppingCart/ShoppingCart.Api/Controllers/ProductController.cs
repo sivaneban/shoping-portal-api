@@ -1,13 +1,9 @@
 ﻿using Application.Product.Commands;
 using Application.Product.Queries;
-using Domain.DTO;
 using Domain.Entities;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace ShoppingCart.Api.Controllers
@@ -33,7 +29,7 @@ namespace ShoppingCart.Api.Controllers
         public async Task<ActionResult<Product>> GetProductById(int productId)
         {
 
-            Product  product = await _mediator.Send(new GetProductDetailsQuery { Id = productId });
+            Product product = await _mediator.Send(new GetProductDetailsQuery { Id = productId });
             if (product == null)
             {
                 return NotFound();
@@ -48,15 +44,15 @@ namespace ShoppingCart.Api.Controllers
         public async Task<ActionResult<int>> Post([FromBody] CreateProductCommand product)
         {
             var result = await _mediator.Send(product);
-            if (result > 0) 
-            { 
-                return  Created("", result); 
+            if (result > 0)
+            {
+                return Created("", result);
             }
             else
             {
                 return Conflict();
             }
-            
+
         }
 
         [HttpPut]
@@ -66,14 +62,14 @@ namespace ShoppingCart.Api.Controllers
             if (result == true)
             {
                 return NoContent();
-              
+
             }
             else
             {
                 return NotFound();
             }
-           
-            
+
+
         }
 
         [HttpDelete("{productId}")]
@@ -85,7 +81,7 @@ namespace ShoppingCart.Api.Controllers
             {
                 return NotFound();
             }
-            if (result==1)
+            if (result == 1)
             {
                 return NoContent();
             }

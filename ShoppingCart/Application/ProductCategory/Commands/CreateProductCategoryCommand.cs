@@ -1,15 +1,11 @@
 ﻿using Application.Common.Interfaces;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Application.ProductCategory.Commands
 {
-    public class CreateProductCategoryCommand: IRequest<int>
+    public class CreateProductCategoryCommand : IRequest<int>
     {
         public string ProductCategoryName { get; set; }
     }

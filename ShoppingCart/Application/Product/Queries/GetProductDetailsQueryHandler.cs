@@ -1,6 +1,5 @@
 ﻿using Application.Common.Interfaces;
 using MediatR;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -23,5 +22,5 @@ namespace Application.Product.Queries
             return product;
         }
     }
-    
+
 }

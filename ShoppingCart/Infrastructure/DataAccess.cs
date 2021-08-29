@@ -3,7 +3,6 @@ using Application.Product.Commands;
 using Application.ProductCategory.Commands;
 using Domain.Entities;
 using Infrastructure.Context;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -36,7 +35,7 @@ namespace Infrastructure
         public bool UpdateProduct(UpdateProductCommand updateRequest)
         {
             Product product = _products.Where(prod => prod.ProductId == updateRequest.ProductId).SingleOrDefault();
-            if(product == null)
+            if (product == null)
             {
                 return false;
             }

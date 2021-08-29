@@ -12,7 +12,7 @@ namespace Application.Product.Commands
         private readonly IMediator mediator;
         private readonly IApplicationDbContext applicationDbContext;
 
-        public UpdateProductCommandHandler(IDataAccess dataAccess, IMediator mediator,IApplicationDbContext applicationDbContext)
+        public UpdateProductCommandHandler(IDataAccess dataAccess, IMediator mediator, IApplicationDbContext applicationDbContext)
         {
             this.dataAccess = dataAccess;
             this.mediator = mediator;
@@ -21,7 +21,7 @@ namespace Application.Product.Commands
         public async Task<bool> Handle(UpdateProductCommand request, CancellationToken cancellationToken)
         {
             Domain.Entities.Product product = await mediator.Send(new GetProductDetailsQuery { Id = request.ProductId });
-            if(product is null)
+            if (product is null)
             {
                 return false;
             }
@@ -40,7 +40,7 @@ namespace Application.Product.Commands
                 int result = await applicationDbContext.SaveChangesAsync();
                 return result == 1;
             }
-            
+
         }
 
     }

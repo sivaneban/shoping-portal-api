@@ -1,9 +1,6 @@
 ﻿using Application.ProductCategory.Commands;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace ShoppingCart.Api.Controllers
@@ -29,7 +26,7 @@ namespace ShoppingCart.Api.Controllers
             int result = await mediator.Send(command);
             if (result > 0)
             {
-                return Created("",result);
+                return Created("", result);
             }
             else
             {

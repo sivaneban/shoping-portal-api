@@ -23,8 +23,8 @@ namespace Application.Product.Commands
                 ProductName = request.ProductName,
                 ProductCategoryId = request.ProductCategoryId,
                 ProductPrice = request.ProductPrice,
-                QuantityTypeId=request.QuantityTypeId,
-                Quantity=request.Quantity
+                QuantityTypeId = request.QuantityTypeId,
+                Quantity = request.Quantity
             };
             applicationDbContext.Product.Add(entity);
             int result = await applicationDbContext.SaveChangesAsync();

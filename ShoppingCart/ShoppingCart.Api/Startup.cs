@@ -39,6 +39,8 @@ namespace ShoppingCart.Api
                .Build();
 
             services.AddDbContext<ShoppingCartContext>(options => options.UseSqlServer(configuration["ConnectionStrings:ShoppingPortal"]), ServiceLifetime.Transient);
+            services.AddDbContext<ApplicationDbContext>();
+            services.AddScoped<IApplicationDbContext>(provider => provider.GetService<ApplicationDbContext>());
             services.AddScoped<IDataAccess, DataAccess>();
             //services.AddMediatR(typeof(DataAccess).Assembly);
             services.AddMediatR(typeof(GetProductListQueryHandler).Assembly);

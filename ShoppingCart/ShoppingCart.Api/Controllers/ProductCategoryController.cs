@@ -21,7 +21,7 @@ namespace ShoppingCart.Api.Controllers
         //    return View();
         //}
         [HttpPost]
-        public async Task<ActionResult<int>> CreateProductCategory(CreateProductCategoryCommand command)
+        public async Task<ActionResult<int>> Post(CreateProductCategoryCommand command)
         {
             int result = await mediator.Send(command);
             if (result > 0)

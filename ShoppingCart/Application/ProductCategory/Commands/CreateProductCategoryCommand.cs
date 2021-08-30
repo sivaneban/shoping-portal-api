@@ -12,12 +12,10 @@ namespace Application.ProductCategory.Commands
 
     public class CreateProductCategoryCommandHandler : IRequestHandler<CreateProductCategoryCommand, int>
     {
-        private readonly IDataAccess _dataAccess;
         private readonly IApplicationDbContext _applicationDbContext;
 
-        public CreateProductCategoryCommandHandler(IDataAccess dataAccess, IApplicationDbContext applicationDbContext)
+        public CreateProductCategoryCommandHandler(IApplicationDbContext applicationDbContext)
         {
-            _dataAccess = dataAccess;
             _applicationDbContext = applicationDbContext;
         }
         public async Task<int> Handle(CreateProductCategoryCommand request, CancellationToken cancellationToken)

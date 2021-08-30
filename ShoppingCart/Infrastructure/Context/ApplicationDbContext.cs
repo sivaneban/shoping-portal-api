@@ -8,11 +8,9 @@ namespace Infrastructure.Context
 {
     public class ApplicationDbContext : ShoppingCartContext, Application.Common.Interfaces.IApplicationDbContext
     {
-        //  private readonly DbContextOptions options;
 
         public ApplicationDbContext(DbContextOptions<ShoppingCartContext> options) : base(options)
         {
-            // this.options = options;
         }
 
         public DbSet<ProductCategory> ProductCategory { get; set; }

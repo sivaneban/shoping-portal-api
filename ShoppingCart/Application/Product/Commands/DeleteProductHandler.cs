@@ -8,28 +8,24 @@ namespace Application.Product.Commands
 {
     public class DeleteProductHandler : IRequestHandler<DeleteProductCommand, int>
     {
-        private readonly IDataAccess dataAccess;
-        private readonly IApplicationDbContext applicationDbContext;
-        private readonly IMediator mediator;
+        private readonly IApplicationDbContext _applicationDbContext;
 
-        public DeleteProductHandler(IDataAccess dataAccess, IApplicationDbContext applicationDbContext, IMediator mediator)
+        public DeleteProductHandler(IApplicationDbContext applicationDbContext)
         {
-            this.dataAccess = dataAccess;
-            this.applicationDbContext = applicationDbContext;
-            this.mediator = mediator;
+            _applicationDbContext = applicationDbContext;
         }
 
         public async Task<int> Handle(DeleteProductCommand request, CancellationToken cancellationToken)
         {
-            Domain.Entities.Product product = await mediator.Send(new GetProductDetailsQuery { Id = request.Id });
+            Domain.Entities.Product product = await _applicationDbContext.Product.FindAsync(request.Id);
             if (product == null)
             {
                 return 2;
             }
             else
             {
-                applicationDbContext.Product.Remove(product);
-                int result = await applicationDbContext.SaveChangesAsync();
+                _applicationDbContext.Product.Remove(product);
+                int result = await _applicationDbContext.SaveChangesAsync();
                 return result;
             }
         }

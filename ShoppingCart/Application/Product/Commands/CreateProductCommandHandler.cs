@@ -7,13 +7,11 @@ namespace Application.Product.Commands
 {
     public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, int>
     {
-        private readonly IDataAccess _dataAccess;
-        private readonly IApplicationDbContext applicationDbContext;
+        private readonly IApplicationDbContext _applicationDbContext;
 
-        public CreateProductCommandHandler(IDataAccess dataAccess, IApplicationDbContext applicationDbContext)
+        public CreateProductCommandHandler(IApplicationDbContext applicationDbContext)
         {
-            _dataAccess = dataAccess;
-            this.applicationDbContext = applicationDbContext;
+            _applicationDbContext = applicationDbContext;
         }
 
         public async Task<int> Handle(CreateProductCommand request, CancellationToken cancellationToken)
@@ -26,8 +24,8 @@ namespace Application.Product.Commands
                 QuantityTypeId = request.QuantityTypeId,
                 Quantity = request.Quantity
             };
-            applicationDbContext.Product.Add(entity);
-            int result = await applicationDbContext.SaveChangesAsync();
+            _applicationDbContext.Product.Add(entity);
+            int result = await _applicationDbContext.SaveChangesAsync();
             return result;
         }
     }

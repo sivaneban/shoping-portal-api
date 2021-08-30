@@ -8,19 +8,15 @@ namespace Application.Product.Commands
 {
     public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand, bool>
     {
-        private readonly IDataAccess dataAccess;
-        private readonly IMediator mediator;
-        private readonly IApplicationDbContext applicationDbContext;
+        private readonly IApplicationDbContext _applicationDbContext;
 
-        public UpdateProductCommandHandler(IDataAccess dataAccess, IMediator mediator, IApplicationDbContext applicationDbContext)
+        public UpdateProductCommandHandler(IApplicationDbContext applicationDbContext)
         {
-            this.dataAccess = dataAccess;
-            this.mediator = mediator;
-            this.applicationDbContext = applicationDbContext;
+            _applicationDbContext = applicationDbContext;
         }
         public async Task<bool> Handle(UpdateProductCommand request, CancellationToken cancellationToken)
         {
-            Domain.Entities.Product product = await mediator.Send(new GetProductDetailsQuery { Id = request.ProductId });
+            Domain.Entities.Product product = await _applicationDbContext.Product.FindAsync(request.ProductId);
             if (product is null)
             {
                 return false;
@@ -36,8 +32,8 @@ namespace Application.Product.Commands
                     Quantity = request.Quantity
                 };
 
-                applicationDbContext.Product.Update(product);
-                int result = await applicationDbContext.SaveChangesAsync();
+                _applicationDbContext.Product.Update(product);
+                int result = await _applicationDbContext.SaveChangesAsync();
                 return result == 1;
             }
 

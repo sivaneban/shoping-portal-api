@@ -1,5 +1,5 @@
-﻿using Application.Product.Commands;
-using Application.Product.Queries;
+﻿using Tiqri.CloudShoppingCart.Application.Product.Commands;
+using Tiqri.CloudShoppingCart.Application.Product.Queries;
 using Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;

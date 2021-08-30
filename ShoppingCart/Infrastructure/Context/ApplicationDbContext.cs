@@ -1,12 +1,13 @@
-﻿using Domain.Entities;
+﻿using Tiqri.CloudShoppingCart.Application.Common.Interfaces;
+using Domain.Entities;
 //using Infrastructure.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using System.Threading.Tasks;
 
-namespace Infrastructure.Context
+namespace Tiqri.CloudShoppingCart.Infrastructure.Context
 {
-    public class ApplicationDbContext : ShoppingCartContext, Application.Common.Interfaces.IApplicationDbContext
+    public class ApplicationDbContext : ShoppingCartContext, IApplicationDbContext
     {
 
         public ApplicationDbContext(DbContextOptions<ShoppingCartContext> options) : base(options)

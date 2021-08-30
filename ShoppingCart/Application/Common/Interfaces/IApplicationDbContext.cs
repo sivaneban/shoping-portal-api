@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 
-namespace Application.Common.Interfaces
+namespace Tiqri.CloudShoppingCart.Application.Common.Interfaces
 {
     public interface IApplicationDbContext
     {

@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Application.ProductCategory.Queries
+namespace Tiqri.CloudShoppingCart.Application.ProductCategory.Queries
 {
     public class GetProductCategoryQuery : IRequest<Domain.Entities.ProductCategory>
     {

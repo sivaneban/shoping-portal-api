@@ -1,9 +1,9 @@
-﻿using Application.Common.Interfaces;
+﻿using Tiqri.CloudShoppingCart.Application.Common.Interfaces;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Application.ProductCategory.Commands
+namespace Tiqri.CloudShoppingCart.Application.ProductCategory.Commands
 {
     public class CreateProductCategoryCommand : IRequest<int>
     {

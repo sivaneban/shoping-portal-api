@@ -1,8 +1,8 @@
-﻿using Application.Product.Commands;
-using Application.ProductCategory.Commands;
+﻿using Tiqri.CloudShoppingCart.Application.Product.Commands;
+using Tiqri.CloudShoppingCart.Application.ProductCategory.Commands;
 using System.Collections.Generic;
 
-namespace Application.Common.Interfaces
+namespace Tiqri.CloudShoppingCart.Application.Common.Interfaces
 {
     public interface IDataAccess
     {

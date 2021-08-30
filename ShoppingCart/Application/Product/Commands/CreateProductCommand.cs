@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Application.Product.Commands
+namespace Tiqri.CloudShoppingCart.Application.Product.Commands
 {
     public class CreateProductCommand : IRequest<int>
     {

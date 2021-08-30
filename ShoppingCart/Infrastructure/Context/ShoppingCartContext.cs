@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 #nullable disable
 
-namespace Infrastructure.Context
+namespace Tiqri.CloudShoppingCart.Infrastructure.Context
 {
     public partial class ShoppingCartContext : DbContext
     {

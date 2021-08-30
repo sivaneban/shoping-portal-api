@@ -1,10 +1,10 @@
-﻿using Application.Common.Interfaces;
+﻿using Tiqri.CloudShoppingCart.Application.Common.Interfaces;
 using MediatR;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Application.ProductCategory.Queries
+namespace Tiqri.CloudShoppingCart.Application.ProductCategory.Queries
 {
     public class QueryHandler : IRequestHandler<GetProductCategoryQuery, Domain.Entities.ProductCategory>
     {

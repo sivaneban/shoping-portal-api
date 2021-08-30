@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 
-namespace Application.Product.Queries
+namespace Tiqri.CloudShoppingCart.Application.Product.Queries
 {
     public class GetProductListQuery : IRequest<List<Domain.Entities.Product>>
     {

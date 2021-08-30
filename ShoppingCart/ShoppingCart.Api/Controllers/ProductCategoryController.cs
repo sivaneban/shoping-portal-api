@@ -1,4 +1,4 @@
-﻿using Application.ProductCategory.Commands;
+﻿using Tiqri.CloudShoppingCart.Application.ProductCategory.Commands;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;

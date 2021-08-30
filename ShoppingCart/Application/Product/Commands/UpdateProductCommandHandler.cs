@@ -1,10 +1,10 @@
-﻿using Application.Common.Interfaces;
-using Application.Product.Queries;
+﻿using Tiqri.CloudShoppingCart.Application.Common.Interfaces;
+using Tiqri.CloudShoppingCart.Application.Product.Queries;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Application.Product.Commands
+namespace Tiqri.CloudShoppingCart.Application.Product.Commands
 {
     public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommand, bool>
     {

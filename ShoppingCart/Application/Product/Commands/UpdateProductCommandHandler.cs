@@ -16,7 +16,7 @@ namespace Tiqri.CloudShoppingCart.Application.Product.Commands
         }
         public async Task<bool> Handle(UpdateProductCommand request, CancellationToken cancellationToken)
         {
-            Domain.Entities.Product product = await _applicationDbContext.Product.FindAsync(request.ProductId);
+            Tiqri.CloudShoppingCart.Domain.Entities.Product product = await _applicationDbContext.Product.FindAsync(request.ProductId);
             if (product is null)
             {
                 return false;

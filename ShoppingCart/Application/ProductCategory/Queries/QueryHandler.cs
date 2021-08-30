@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tiqri.CloudShoppingCart.Application.ProductCategory.Queries
 {
-    public class QueryHandler : IRequestHandler<GetProductCategoryQuery, Domain.Entities.ProductCategory>
+    public class QueryHandler : IRequestHandler<GetProductCategoryQuery, Tiqri.CloudShoppingCart.Domain.Entities.ProductCategory>
     {
         private readonly IDataAccess dataAccess;
 
@@ -14,7 +14,7 @@ namespace Tiqri.CloudShoppingCart.Application.ProductCategory.Queries
         {
             this.dataAccess = dataAccess;
         }
-        public Task<Domain.Entities.ProductCategory> Handle(GetProductCategoryQuery request, CancellationToken cancellationToken)
+        public Task<Tiqri.CloudShoppingCart.Domain.Entities.ProductCategory> Handle(GetProductCategoryQuery request, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }

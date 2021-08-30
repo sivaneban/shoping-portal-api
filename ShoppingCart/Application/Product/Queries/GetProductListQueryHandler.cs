@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Tiqri.CloudShoppingCart.Application.Product.Queries
 {
-    public class GetProductListQueryHandler : IRequestHandler<GetProductListQuery, List<Domain.Entities.Product>>
+    public class GetProductListQueryHandler : IRequestHandler<GetProductListQuery, List<Tiqri.CloudShoppingCart.Domain.Entities.Product>>
     {
         private readonly IApplicationDbContext _applicationDbContext;
 
@@ -16,9 +16,9 @@ namespace Tiqri.CloudShoppingCart.Application.Product.Queries
             _applicationDbContext = applicationDbContext;
         }
 
-        public Task<List<Domain.Entities.Product>> Handle(GetProductListQuery request, CancellationToken cancellationToken)
+        public Task<List<Tiqri.CloudShoppingCart.Domain.Entities.Product>> Handle(GetProductListQuery request, CancellationToken cancellationToken)
         {
-            List<Domain.Entities.Product> products = _applicationDbContext.Product.ToList();
+            List<Tiqri.CloudShoppingCart.Domain.Entities.Product> products = _applicationDbContext.Product.ToList();
             return Task.FromResult(products);
         }
 

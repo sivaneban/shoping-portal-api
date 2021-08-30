@@ -16,7 +16,7 @@ namespace Tiqri.CloudShoppingCart.Application.Product.Commands
 
         public async Task<int> Handle(CreateProductCommand request, CancellationToken cancellationToken)
         {
-            Domain.Entities.Product entity = new()
+            Tiqri.CloudShoppingCart.Domain.Entities.Product entity = new()
             {
                 ProductName = request.ProductName,
                 ProductCategoryId = request.ProductCategoryId,

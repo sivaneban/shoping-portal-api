@@ -1,6 +1,6 @@
 ﻿using Tiqri.CloudShoppingCart.Application.Product.Commands;
 using Tiqri.CloudShoppingCart.Application.Product.Queries;
-using Domain.Entities;
+using Tiqri.CloudShoppingCart.Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;

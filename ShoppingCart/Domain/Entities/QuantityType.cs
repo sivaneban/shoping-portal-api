@@ -1,6 +1,6 @@
 ﻿#nullable disable
 
-namespace Domain.Entities
+namespace Tiqri.CloudShoppingCart.Domain.Entities
 {
     public partial class QuantityType
     {

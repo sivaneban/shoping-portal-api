@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Domain.DTO
+namespace Tiqri.CloudShoppingCart.Domain.DTO
 {
     public class ProductDto
     {

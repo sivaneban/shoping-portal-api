@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Application\Tiqri.CloudShoppingCart.Application.csproj" />
-    <ProjectReference Include="..\Domain\Domain.csproj" />
+    <ProjectReference Include="..\Domain\Tiqri.CloudShoppingCart.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>

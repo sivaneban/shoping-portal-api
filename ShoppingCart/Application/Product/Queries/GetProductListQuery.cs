@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Tiqri.CloudShoppingCart.Application.Product.Queries
 {
-    public class GetProductListQuery : IRequest<List<Domain.Entities.Product>>
+    public class GetProductListQuery : IRequest<List<Tiqri.CloudShoppingCart.Domain.Entities.Product>>
     {
 
     }

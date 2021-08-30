@@ -1,5 +1,5 @@
 ﻿using Tiqri.CloudShoppingCart.Application.Common.Interfaces;
-using Domain.Entities;
+using Tiqri.CloudShoppingCart.Domain.Entities;
 //using Infrastructure.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;

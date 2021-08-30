@@ -1,4 +1,4 @@
-﻿using Domain.Entities;
+﻿using Tiqri.CloudShoppingCart.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 #nullable disable

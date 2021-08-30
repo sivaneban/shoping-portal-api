@@ -1,8 +1,7 @@
-﻿using Tiqri.CloudShoppingCart.Application.Common.Interfaces;
-using Tiqri.CloudShoppingCart.Application.Product.Queries;
-using MediatR;
+﻿using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
+using Tiqri.CloudShoppingCart.Application.Common.Interfaces;
 
 namespace Tiqri.CloudShoppingCart.Application.Product.Commands
 {
@@ -17,7 +16,7 @@ namespace Tiqri.CloudShoppingCart.Application.Product.Commands
 
         public async Task<int> Handle(DeleteProductCommand request, CancellationToken cancellationToken)
         {
-            Tiqri.CloudShoppingCart.Domain.Entities.Product product = await _applicationDbContext.Product.FindAsync(request.Id);
+            Domain.Entities.Product product = await _applicationDbContext.Product.FindAsync(request.Id);
             if (product == null)
             {
                 return 2;

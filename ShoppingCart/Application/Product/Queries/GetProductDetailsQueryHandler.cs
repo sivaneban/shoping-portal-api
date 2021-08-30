@@ -1,11 +1,11 @@
-﻿using Tiqri.CloudShoppingCart.Application.Common.Interfaces;
-using MediatR;
+﻿using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
+using Tiqri.CloudShoppingCart.Application.Common.Interfaces;
 
 namespace Tiqri.CloudShoppingCart.Application.Product.Queries
 {
-    public class GetProductDetailsQueryHandler : IRequestHandler<GetProductDetailsQuery, Tiqri.CloudShoppingCart.Domain.Entities.Product>
+    public class GetProductDetailsQueryHandler : IRequestHandler<GetProductDetailsQuery, Domain.Entities.Product>
     {
         private readonly IApplicationDbContext _applicationDbContext;
 
@@ -14,9 +14,9 @@ namespace Tiqri.CloudShoppingCart.Application.Product.Queries
             _applicationDbContext = applicationDbContext;
         }
 
-        public async Task<Tiqri.CloudShoppingCart.Domain.Entities.Product> Handle(GetProductDetailsQuery request, CancellationToken cancellationToken)
+        public async Task<Domain.Entities.Product> Handle(GetProductDetailsQuery request, CancellationToken cancellationToken)
         {
-            Tiqri.CloudShoppingCart.Domain.Entities.Product product =await _applicationDbContext.Product.FindAsync(request.Id);
+            Domain.Entities.Product product = await _applicationDbContext.Product.FindAsync(request.Id);
             return product;
         }
     }

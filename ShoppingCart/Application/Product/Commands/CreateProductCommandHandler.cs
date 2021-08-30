@@ -1,7 +1,7 @@
-﻿using Tiqri.CloudShoppingCart.Application.Common.Interfaces;
-using MediatR;
+﻿using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
+using Tiqri.CloudShoppingCart.Application.Common.Interfaces;
 
 namespace Tiqri.CloudShoppingCart.Application.Product.Commands
 {
@@ -16,7 +16,7 @@ namespace Tiqri.CloudShoppingCart.Application.Product.Commands
 
         public async Task<int> Handle(CreateProductCommand request, CancellationToken cancellationToken)
         {
-            Tiqri.CloudShoppingCart.Domain.Entities.Product entity = new()
+            Domain.Entities.Product entity = new()
             {
                 ProductName = request.ProductName,
                 ProductCategoryId = request.ProductCategoryId,

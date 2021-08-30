@@ -1,9 +1,9 @@
-﻿using Tiqri.CloudShoppingCart.Application.Common.Interfaces;
-using Tiqri.CloudShoppingCart.Domain.Entities;
-//using Infrastructure.Entities;
+﻿//using Infrastructure.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using System.Threading.Tasks;
+using Tiqri.CloudShoppingCart.Application.Common.Interfaces;
+using Tiqri.CloudShoppingCart.Domain.Entities;
 
 namespace Tiqri.CloudShoppingCart.Infrastructure.Context
 {

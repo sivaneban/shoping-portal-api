@@ -1,9 +1,9 @@
-﻿using Tiqri.CloudShoppingCart.Application.Common.Interfaces;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Tiqri.CloudShoppingCart.Application.Common.Interfaces;
 using Tiqri.CloudShoppingCart.Application.Product.Commands;
 using Tiqri.CloudShoppingCart.Application.ProductCategory.Commands;
 using Tiqri.CloudShoppingCart.Domain.Entities;
-using System.Collections.Generic;
-using System.Linq;
 using Tiqri.CloudShoppingCart.Infrastructure.Context;
 
 namespace Infrastructure

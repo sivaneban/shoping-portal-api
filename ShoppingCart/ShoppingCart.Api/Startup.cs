@@ -1,5 +1,3 @@
-using Tiqri.CloudShoppingCart.Application.Common.Interfaces;
-using Tiqri.CloudShoppingCart.Application.Product.Queries;
 using Infrastructure;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
@@ -10,6 +8,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using System;
+using Tiqri.CloudShoppingCart.Application.Common.Interfaces;
+using Tiqri.CloudShoppingCart.Application.Product.Queries;
 using Tiqri.CloudShoppingCart.Infrastructure.Context;
 
 namespace ShoppingCart.Api

@@ -1,10 +1,10 @@
-﻿using Tiqri.CloudShoppingCart.Application.Product.Commands;
-using Tiqri.CloudShoppingCart.Application.Product.Queries;
-using Tiqri.CloudShoppingCart.Domain.Entities;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Tiqri.CloudShoppingCart.Application.Product.Commands;
+using Tiqri.CloudShoppingCart.Application.Product.Queries;
+using Tiqri.CloudShoppingCart.Domain.Entities;
 
 namespace ShoppingCart.Api.Controllers
 {

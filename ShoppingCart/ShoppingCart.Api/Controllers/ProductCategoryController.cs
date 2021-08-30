@@ -1,7 +1,7 @@
-﻿using Tiqri.CloudShoppingCart.Application.ProductCategory.Commands;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using Tiqri.CloudShoppingCart.Application.ProductCategory.Commands;
 
 namespace ShoppingCart.Api.Controllers
 {

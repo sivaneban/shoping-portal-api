@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.31313.79
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoppingCart.Api", "ShoppingCart.Api\ShoppingCart.Api.csproj", "{6019C773-AAD9-4EFC-A5EC-2D06A9C99A4C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{627A988C-9058-49AF-87EC-CE250E43E849}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{627A988C-9058-49AF-87EC-CE250E43E849}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{DD56E7E7-CD88-457E-AA8F-2E84E98BB2ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tiqri.CloudShoppingCart.Infrastructure", "Infrastructure\Tiqri.CloudShoppingCart.Infrastructure.csproj", "{DD56E7E7-CD88-457E-AA8F-2E84E98BB2ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{81F63814-C2BC-42AC-90AE-401C6381B335}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{81F63814-C2BC-42AC-90AE-401C6381B335}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

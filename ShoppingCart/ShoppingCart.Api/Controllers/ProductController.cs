@@ -81,7 +81,7 @@ namespace ShoppingCart.Api.Controllers
             {
                 return NotFound();
             }
-            if (result == 1)
+            else if (result == 1)
             {
                 return NoContent();
             }

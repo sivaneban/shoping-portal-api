@@ -6,11 +6,11 @@ using Tiqri.CloudShoppingCart.Application.Common.Interfaces;
 
 namespace Tiqri.CloudShoppingCart.Application.ProductCategory.Queries
 {
-    public class QueryHandler : IRequestHandler<GetProductCategoryQuery, Domain.Entities.ProductCategory>
+    public class GetProductCategoryQueryHandler : IRequestHandler<GetProductCategoryQuery, Domain.Entities.ProductCategory>
     {
         private readonly IDataAccess dataAccess;
 
-        public QueryHandler(IDataAccess dataAccess)
+        public GetProductCategoryQueryHandler(IDataAccess dataAccess)
         {
             this.dataAccess = dataAccess;
         }

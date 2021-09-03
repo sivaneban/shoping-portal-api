@@ -56,5 +56,19 @@ namespace ShoppingCart.Api.Controllers
                 return StatusCode(Microsoft.AspNetCore.Http.StatusCodes.Status500InternalServerError);
             }
         }
+
+        [HttpPut]
+        public async Task<ActionResult> Put(UpdateProductCategoryCommand productCategory)
+        {
+            bool result = await _mediator.Send(productCategory);
+            if (result)
+            {
+                return NoContent();
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
     }
 }

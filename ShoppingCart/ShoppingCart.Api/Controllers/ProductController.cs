@@ -46,7 +46,7 @@ namespace ShoppingCart.Api.Controllers
             var result = await _mediator.Send(product);
             if (result > 0)
             {
-                return Created("", result);
+                return CreatedAtRoute("", result);
             }
             else
             {

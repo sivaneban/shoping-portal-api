@@ -22,20 +22,38 @@ namespace ShoppingCart.Api.Controllers
         [HttpGet]
         public async Task<ActionResult<List<ProductCategory>>> Get()
         {
-           return await _mediator.Send(new GetProductCategoryQuery());
+            return await _mediator.Send(new GetProductCategoryQuery());
         }
 
-    [HttpPost]
+        [HttpPost]
         public async Task<ActionResult<int>> Post(CreateProductCategoryCommand command)
         {
             int result = await _mediator.Send(command);
             if (result > 0)
             {
-                return Created("", result);
+                return CreatedAtRoute("", result);
             }
             else
             {
                 return Conflict();
+            }
+        }
+
+        [HttpDelete]
+        public async Task<ActionResult> Delete(int categoryId)
+        {
+            int result =await _mediator.Send(new ProductCategoryDeleteCommand{ Id = categoryId });
+            if (result == 2)
+            {
+                return NotFound();
+            }
+            else if (result == 1)
+            {
+                return NoContent();
+            }
+            else
+            {
+                return StatusCode(Microsoft.AspNetCore.Http.StatusCodes.Status500InternalServerError);
             }
         }
     }

@@ -7,9 +7,9 @@ namespace ShoppingCart.Api.Controllers
     public class PaymentController : ControllerBase
     {
         [HttpGet]
-        public ActionResult Index()
+        public void Index()
         {
-            return Ok();
+            //return View();
         }
     }
 }

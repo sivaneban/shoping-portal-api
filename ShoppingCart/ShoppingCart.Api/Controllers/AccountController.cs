@@ -4,12 +4,12 @@ namespace ShoppingCart.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class AccountController : Controller
+    public class AccountController : ControllerBase
     {
         [HttpGet]
-        public IActionResult Index()
+        public ActionResult Index()
         {
-            return View();
+            return Ok();
         }
     }
 }

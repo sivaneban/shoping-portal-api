@@ -10,7 +10,7 @@ namespace ShoppingCart.Api.Controllers
 {
     [ApiController]
     [Route("api/products/")]
-    public class ProductController : Controller
+    public class ProductController : ControllerBase
     {
         private readonly IMediator _mediator;
 

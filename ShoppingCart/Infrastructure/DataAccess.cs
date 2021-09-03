@@ -11,13 +11,13 @@ namespace Infrastructure
     public class DataAccess : IDataAccess
     {
         private List<Product> _products = new();
-        private readonly ShoppingCartContext context;
+        private readonly ShoppingCartContext _context;
 
         public DataAccess(ShoppingCartContext context)
         {
             _products.Add(new Product { ProductId = 1, ProductName = "MSI 9Sek", ProductCategoryId = 1 });
             _products.Add(new Product { ProductId = 2, ProductName = "Samsung M32", ProductCategoryId = 2 });
-            this.context = context;
+            _context = context;
         }
         public Product AddProduct(string name, int category)
         {
@@ -56,8 +56,8 @@ namespace Infrastructure
             {
                 ProductCategoryName = request.ProductCategoryName
             };
-            var x = context.Add(prodCategory);
-            context.SaveChanges();
+            var x = _context.Add(prodCategory);
+            _context.SaveChanges();
             return new ProductCategory();
         }
 

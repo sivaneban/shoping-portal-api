@@ -1,4 +1,4 @@
-using Infrastructure;
+﻿using Infrastructure;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,6 +30,8 @@ namespace ShoppingCart.Api
                .SetBasePath(AppContext.BaseDirectory)
                .AddJsonFile("appsettings.json", true, true)
                .Build();
+
+            services.AddAutoMapper(typeof(Startup));
 
             services.AddDbContext<ShoppingCartContext>(options => options.UseSqlServer(configuration["ConnectionStrings:ShoppingPortal"]), ServiceLifetime.Transient);
             services.AddDbContext<ApplicationDbContext>();

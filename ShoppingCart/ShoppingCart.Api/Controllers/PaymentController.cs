@@ -4,12 +4,12 @@ namespace ShoppingCart.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class PaymentController : Controller
+    public class PaymentController : ControllerBase
     {
         [HttpGet]
-        public IActionResult Index()
+        public void Index()
         {
-            return View();
+            //return View();
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Tiqri.CloudShoppingCart.Infrastructure.Context
 
         public DbSet<ProductCategory> ProductCategory { get; set; }
         public DbSet<Product> Product { get; set; }
-
+        public DbSet<Account> Account { get; set; }
         public async Task<int> SaveChangesAsync()
         {
             var result = await base.SaveChangesAsync();
@@ -25,7 +25,7 @@ namespace Tiqri.CloudShoppingCart.Infrastructure.Context
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-           // builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            // builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             base.OnModelCreating(builder);
 
         }

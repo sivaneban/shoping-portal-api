@@ -5,6 +5,7 @@ using Tiqri.CloudShoppingCart.Application.Common.Interfaces;
 
 namespace Tiqri.CloudShoppingCart.Application.ProductCategory.Commands
 {
+  
     public class CreateProductCategoryCommand : IRequest<int>
     {
         public string ProductCategoryName { get; set; }

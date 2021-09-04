@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Tiqri.CloudShoppingCart.Application.Common.Interfaces;
+using Tiqri.CloudShoppingCart.Application.Utils;
 
 namespace Tiqri.CloudShoppingCart.Application.Product.Commands
 {
@@ -16,7 +17,7 @@ namespace Tiqri.CloudShoppingCart.Application.Product.Commands
 
         public async Task<int> Handle(CreateProductCommand request, CancellationToken cancellationToken)
         {
-            Domain.Entities.Product entity = new()
+            /*Domain.Entities.Product entity = new()
             {
                 ProductName = request.ProductName,
                 ProductCategoryId = request.ProductCategoryId,
@@ -26,7 +27,16 @@ namespace Tiqri.CloudShoppingCart.Application.Product.Commands
             };
             _applicationDbContext.Product.Add(entity);
             int result = await _applicationDbContext.SaveChangesAsync();
-            return result;
+            return result;*/
+
+            var entity = new Domain.Entities.Product();
+
+            PropertyCopier<CreateProductCommand, Domain.Entities.Product>.Copy(request, entity);
+
+            await _applicationDbContext.Product.AddAsync(entity, cancellationToken);
+            await _applicationDbContext.SaveChangesAsync();
+
+            return entity.ProductId;
         }
     }
 }

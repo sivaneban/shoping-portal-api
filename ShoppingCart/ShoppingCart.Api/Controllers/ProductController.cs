@@ -1,6 +1,10 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ShoppingCart.Api.Validators.Create;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using Tiqri.CloudShoppingCart.Application.Product.Commands;
 using Tiqri.CloudShoppingCart.Application.Product.Queries;
@@ -43,15 +47,25 @@ namespace ShoppingCart.Api.Controllers
         [HttpPost]
         public async Task<ActionResult<int>> Post([FromBody] CreateProductCommand product)
         {
-            var result = await _mediator.Send(product);
-            if (result > 0)
+            try
             {
+                CreateProductCommandValidator validator = new CreateProductCommandValidator();
+
+                var validationResults = validator.Validate(product);
+                if (!validationResults.IsValid)
+                {
+                    return Conflict(validationResults);
+                }
+
+                var result = await _mediator.Send(product);
                 return CreatedAtRoute("", result);
+
             }
-            else
+            catch (Exception ex)
             {
                 return Conflict();
             }
+
 
         }
 
